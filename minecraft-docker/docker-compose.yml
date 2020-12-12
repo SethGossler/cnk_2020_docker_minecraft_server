@@ -6,7 +6,8 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - /home/ubuntu/minecraft-docker/data:/data
+      - /home/ubuntu/cnk_2020_docker_minecraft_server/minecraft-docker/data:/data
     environment:
       EULA: "TRUE"      
+      MEMORY: 3G
     restart: always

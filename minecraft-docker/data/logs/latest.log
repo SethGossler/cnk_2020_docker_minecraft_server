@@ -223,3 +223,19 @@
 [09:47:04] [Server thread/INFO]: sithseth left the game
 [09:54:58] [Server thread/INFO]: Mastahtao lost connection: Disconnected
 [09:54:58] [Server thread/INFO]: Mastahtao left the game
+[10:00:09] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[10:00:09] [Server thread/INFO]: [Rcon: Stopping the server]
+[10:00:09] [RCON Client /127.0.0.1 #2/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[10:00:09] [Server thread/INFO]: Stopping server
+[10:00:09] [Server thread/INFO]: Saving players
+[10:00:09] [Server thread/INFO]: Saving worlds
+[10:00:09] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[10:00:10] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[10:00:10] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[10:00:10] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:00:10] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[10:00:10] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:00:10] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[10:00:10] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:00:10] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:00:10] [Server thread/INFO]: Thread RCON Listener stopped
