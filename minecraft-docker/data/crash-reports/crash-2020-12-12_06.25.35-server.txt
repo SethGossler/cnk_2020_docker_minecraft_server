@@ -1,0 +1,227 @@
+---- Minecraft Crash Report ----
+// I blame Dinnerbone.
+
+Time: 12/12/20 6:25 AM
+Description: Watching Server
+
+java.lang.Error: Watchdog
+	at java.nio.CharBuffer.wrap(CharBuffer.java:373)
+	at sun.nio.cs.StreamEncoder.implWrite(StreamEncoder.java:265)
+	at sun.nio.cs.StreamEncoder.write(StreamEncoder.java:125)
+	at sun.nio.cs.StreamEncoder.write(StreamEncoder.java:135)
+	at java.io.OutputStreamWriter.write(OutputStreamWriter.java:220)
+	at com.google.gson.stream.JsonWriter.string(JsonWriter.java:591)
+	at com.google.gson.stream.JsonWriter.writeDeferredName(JsonWriter.java:402)
+	at com.google.gson.stream.JsonWriter.beginObject(JsonWriter.java:307)
+	at com.google.gson.internal.bind.TypeAdapters$29.write(TypeAdapters.java:773)
+	at com.google.gson.internal.bind.TypeAdapters$29.write(TypeAdapters.java:776)
+	at com.google.gson.internal.bind.TypeAdapters$29.write(TypeAdapters.java:714)
+	at com.google.gson.internal.Streams.write(Streams.java:72)
+	at com.google.gson.Gson.toJson(Gson.java:745)
+	at com.google.gson.Gson.toJson(Gson.java:703)
+	at vt.b(SourceFile:189)
+	at acu.b(SourceFile:357)
+	at acu.c(SourceFile:369)
+	at aay.a(SourceFile:1116)
+	at nd.m(SourceFile:396)
+	at aax.c(SourceFile:186)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:882)
+	at zg.b(SourceFile:312)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:811)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:670)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:257)
+	at net.minecraft.server.MinecraftServer$$Lambda$3230/1635776399.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at java.nio.CharBuffer.wrap(CharBuffer.java:373)
+	at sun.nio.cs.StreamEncoder.implWrite(StreamEncoder.java:265)
+	at sun.nio.cs.StreamEncoder.write(StreamEncoder.java:125)
+	at sun.nio.cs.StreamEncoder.write(StreamEncoder.java:135)
+	at java.io.OutputStreamWriter.write(OutputStreamWriter.java:220)
+	at com.google.gson.stream.JsonWriter.string(JsonWriter.java:591)
+	at com.google.gson.stream.JsonWriter.writeDeferredName(JsonWriter.java:402)
+	at com.google.gson.stream.JsonWriter.beginObject(JsonWriter.java:307)
+	at com.google.gson.internal.bind.TypeAdapters$29.write(TypeAdapters.java:773)
+	at com.google.gson.internal.bind.TypeAdapters$29.write(TypeAdapters.java:776)
+	at com.google.gson.internal.bind.TypeAdapters$29.write(TypeAdapters.java:714)
+	at com.google.gson.internal.Streams.write(Streams.java:72)
+	at com.google.gson.Gson.toJson(Gson.java:745)
+	at com.google.gson.Gson.toJson(Gson.java:703)
+	at vt.b(SourceFile:189)
+	at acu.b(SourceFile:357)
+	at acu.c(SourceFile:369)
+	at aay.a(SourceFile:1116)
+	at nd.m(SourceFile:396)
+	at aax.c(SourceFile:186)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:882)
+	at zg.b(SourceFile:312)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:811)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:670)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:257)
+
+-- Thread Dump --
+Details:
+	Threads: "Netty Epoll Server IO #3" Id=33 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@1c0578af owned by "Server thread" Id=15
+	at java.util.Collections$SynchronizedCollection.add(Collections.java:2035)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@1c0578af
+	at aax$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:637)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1487)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1161)
+	...
+
+
+"Netty Epoll Server IO #2" Id=32 RUNNABLE
+	at io.netty.channel.epoll.Native.epollWait0(Native Method)
+	at io.netty.channel.epoll.Native.epollWait(Native.java:114)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:239)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:256)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Netty Epoll Server IO #1" Id=27 RUNNABLE
+	at io.netty.channel.epoll.Native.epollWait0(Native Method)
+	at io.netty.channel.epoll.Native.epollWait(Native.java:114)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:239)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:256)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Server Watchdog" Id=26 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:454)
+	at zj.run(SourceFile:49)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"RCON Listener #1" Id=25 RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at adl.run(SourceFile:42)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Netty Epoll Server IO #0" Id=21 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@1c0578af owned by "Server thread" Id=15
+	at java.util.Collections$SynchronizedCollection.add(Collections.java:2035)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@1c0578af
+	at aax$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:637)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1487)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1161)
+	...
+
+
+"ObjectCleanerThread" Id=20 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@12c2855f
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@12c2855f
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+	at io.netty.util.internal.ObjectCleaner$1.run(ObjectCleaner.java:54)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Server console handler" Id=19 RUNNABLE (in native)
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:284)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	-  locked java.io.BufferedInputStream@16fd13df
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)
+	-  locked java.io.InputStreamReader@53ff8f64
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	...
+
+
+"DestroyJavaVM" Id=18 RUNNABLE
+
+
+"Server thread" Id=15 RUNNABLE
+	at java.nio.CharBuffer.wrap(CharBuffer.java:373)
+	at sun.nio.cs.StreamEncoder.implWrite(StreamEncoder.java:265)
+	at sun.nio.cs.StreamEncoder.write(StreamEncoder.java:125)
+	-  locked java.io.OutputStreamWriter@640855b4
+	at sun.nio.cs.StreamEncoder.write(StreamEncoder.java:135)
+	at java.io.OutputStreamWriter.write(OutputStreamWriter.java:220)
+	at com.google.gson.stream.JsonWriter.string(JsonWriter.java:591)
+	at com.google.gson.stream.JsonWriter.writeDeferredName(JsonWriter.java:402)
+	at com.google.gson.stream.JsonWriter.beginObject(JsonWriter.java:307)
+	...
+
+
+"Snooper Timer" Id=16 WAITING on java.util.TaskQueue@6266dc17
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.util.TaskQueue@6266dc17
+	at java.lang.Object.wait(Object.java:502)
+	at java.util.TimerThread.mainLoop(Timer.java:526)
+	at java.util.TimerThread.run(Timer.java:505)
+
+
+"Timer hack thread" Id=13 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at x$6.run(SourceFile:636)
+
+
+"Signal Dispatcher" Id=5 RUNNABLE
+
+
+"Finalizer" Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@1c7b586f
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@1c7b586f
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:165)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:216)
+
+
+"Reference Handler" Id=2 WAITING on java.lang.ref.Reference$Lock@33d0702b
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.Reference$Lock@33d0702b
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+
+
+Stacktrace:
+	at zj.run(SourceFile:65)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- Performance stats --
+Details:
+	Random tick rate: 3
+	Level stats: ResourceKey[minecraft:dimension / minecraft:overworld]: players: 0, entities: 740 [minecraft:chicken:91,minecraft:item:91,minecraft:pig:87,minecraft:sheep:71,minecraft:cod:51], block_entities: 128 [minecraft:chest:72,minecraft:mob_spawner:44,minecraft:beehive:5,minecraft:furnace:4,minecraft:campfire:2], block_ticks: 8475, fluid_ticks: 3890, chunk_source: ServerChunkCache: 4323,
+ResourceKey[minecraft:dimension / minecraft:the_nether]: players: 0, entities: 0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: ServerChunkCache: 0,
+ResourceKey[minecraft:dimension / minecraft:the_end]: players: 0, entities: 0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: ServerChunkCache: 0
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.4
+	Minecraft Version ID: 1.16.4
+	Operating System: Linux (amd64) version 5.4.0-1018-aws
+	Java Version: 1.8.0_212, IcedTea
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), IcedTea
+	Memory: 1948398808 bytes (1858 MB) / 3221225472 bytes (3072 MB) up to 3221225472 bytes (3072 MB)
+	CPUs: 2
+	JVM Flags: 3 total; -XX:+UseG1GC -Xms3G -Xmx3G
+	Player Count: 2 / 20; [aah['Mastahtao'/635, l='ServerLevel[world]', x=597.18, y=62.07, z=5815.58], aah['sithseth'/206, l='ServerLevel[world]', x=56.21, y=5.00, z=202.56]]
+	Data Packs: vanilla
+	Is Modded: Unknown (can't tell)
+	Type: Dedicated Server (map_server.txt)
