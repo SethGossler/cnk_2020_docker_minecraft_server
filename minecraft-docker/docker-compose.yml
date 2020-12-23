@@ -9,5 +9,9 @@ services:
       - /home/ubuntu/cnk_2020_docker_minecraft_server/minecraft-docker/data:/data
     environment:
       EULA: "TRUE"      
-      MEMORY: 3G
+      MEMORY: 2G
+      TYPE: PAPER
+      OVERRIDE_SERVER_PROPERTIES: "TRUE"
+      VIEW_DISTANCE: 10
+      ENABLE_AUTOPAUSE: "TRUE"
     restart: always
